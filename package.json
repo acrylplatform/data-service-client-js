@@ -1,0 +1,54 @@
+{
+  "name": "@acryl/data-service-client-js",
+  "version": "4.0.2",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "build": "tsc",
+    "build:browser:dev": "tsc && browserify ./dist/index.js -o ./dist/umd.js",
+    "build:browser": "browserify ./dist/index.js -o ./dist/umd.js -u @acryl/data-entities -u @acryl/bignumber",
+    "build:all": "rimraf ./dist/* && npm run build && npm run build:browser",
+    "test": "jest",
+    "prepare": "npm run build:all && npm test"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@acryl/bignumber": "^0.0.3",
+    "@acryl/data-entities": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^22.2.3",
+    "@types/node": "12.7.4",
+    "@types/node-fetch": "^1.6.9",
+    "browserify": "^16.2.2",
+    "jest": "^24.9.0",
+    "node-fetch": "^2.1.2",
+    "parse-json-bignumber": "^0.0.2",
+    "rimraf": "^2.6.2",
+    "ts-jest": "^23.10.5",
+    "typescript": "^3.4.5"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(src/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      ".history"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "testURL": "http://localhost/"
+  }
+}

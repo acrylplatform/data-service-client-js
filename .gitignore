@@ -1,0 +1,7 @@
+.history
+node_modules/
+dist/
+.idea
+yarn-error.log
+*.sandbox.js
+*.sandbox.ts
